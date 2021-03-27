@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinChange.Core.Tests", "CoinChange.Core.Tests\CoinChange.Core.Tests.csproj", "{B32ED5DB-BCD6-422A-BA60-9C31E717AE42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinChange.Core", "CoinChange.Core\CoinChange.Core.csproj", "{DB401DB2-D29F-42A3-99D3-8E3981827F87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B32ED5DB-BCD6-422A-BA60-9C31E717AE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B32ED5DB-BCD6-422A-BA60-9C31E717AE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B32ED5DB-BCD6-422A-BA60-9C31E717AE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B32ED5DB-BCD6-422A-BA60-9C31E717AE42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB401DB2-D29F-42A3-99D3-8E3981827F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB401DB2-D29F-42A3-99D3-8E3981827F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB401DB2-D29F-42A3-99D3-8E3981827F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB401DB2-D29F-42A3-99D3-8E3981827F87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB029F86-C197-4216-9FF7-E7F3E013DAC0}
+	EndGlobalSection
+EndGlobal
