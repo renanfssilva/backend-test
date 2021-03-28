@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using ScoreCombination.Core.DataInterface;
 using ScoreCombination.Core.Domain;
 
 namespace ScoreCombination.Core.Processor
@@ -7,10 +9,12 @@ namespace ScoreCombination.Core.Processor
     public class ScoreCombinationRequestProcessor
     {
         private readonly ScoreCombinationRequestValidator _validator;
+        private readonly IScoreCombinationRepository _scoreCombinationRepository;
 
-        public ScoreCombinationRequestProcessor()
+        public ScoreCombinationRequestProcessor(IScoreCombinationRepository scoreCombinationRepository)
         {
             _validator = new ScoreCombinationRequestValidator();
+            _scoreCombinationRepository = scoreCombinationRepository;
         }
 
         public ScoreCombinationResult GetCombination(ScoreCombinationRequest request)
@@ -23,6 +27,14 @@ namespace ScoreCombination.Core.Processor
             };
 
             result.Combination ??= new List<long>();
+
+            _scoreCombinationRepository.Save(new ScoreCombinationRecord
+            {
+                Combination = result.Combination,
+                Date = DateTime.Now,
+                Sequence = request.Sequence,
+                Target = request.Target
+            });
 
             return result;
         }
