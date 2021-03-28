@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace CoinChange.Core.Domain
+namespace ScoreCombination.Core.Domain
 {
-    public class CoinChangeResult
+    public class ScoreCombinationResult
     {
         public List<long> Combination { get; set; }
 
-        public CoinChangeResult()
+        public ScoreCombinationResult()
         {
             Combination = new List<long>();
         }

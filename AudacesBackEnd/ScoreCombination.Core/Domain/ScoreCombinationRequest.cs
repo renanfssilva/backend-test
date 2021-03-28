@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 
-namespace CoinChange.Core.Domain
+namespace ScoreCombination.Core.Domain
 {
-    public class CoinChangeRequest
+    public class ScoreCombinationRequest
     {
         public List<long> Sequence { get; set; }
         public long Target { get; set; }
 
-        public CoinChangeRequest()
+        public ScoreCombinationRequest()
         {
             Sequence = new List<long>();
         }
