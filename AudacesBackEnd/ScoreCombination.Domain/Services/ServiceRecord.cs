@@ -1,20 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ScoreCombination.Core.DataInterface;
-using ScoreCombination.Core.Domain;
+using ScoreCombination.Domain.Entities;
+using ScoreCombination.Domain.Interfaces.Repositories;
+using ScoreCombination.Domain.Interfaces.Services;
+using ScoreCombination.Domain.Interfaces.Validators;
+using ScoreCombination.Domain.Validators;
 
-namespace ScoreCombination.Core.Processor
+namespace ScoreCombination.Domain.Services
 {
-    public class ScoreCombinationRequestProcessor
+    public class ServiceRecord : ServiceBase<ScoreCombinationRecord>, IServiceRecord
     {
-        private readonly ScoreCombinationRequestValidator _validator;
-        private readonly IScoreCombinationRepository _scoreCombinationRepository;
+        private readonly IScoreCombinationRequestValidator _validator;
+        private readonly IRepositoryRecord _repositoryRecord;
 
-        public ScoreCombinationRequestProcessor(IScoreCombinationRepository scoreCombinationRepository)
+        public ServiceRecord(IRepositoryRecord repositoryRecord) : base(repositoryRecord)
         {
+            _repositoryRecord = repositoryRecord;
             _validator = new ScoreCombinationRequestValidator();
-            _scoreCombinationRepository = scoreCombinationRepository;
+        }
+
+        public IEnumerable<ScoreCombinationRecord> GetCallHistory(DateTime initialDate, DateTime finalDate)
+        {
+            return _repositoryRecord.GetCallHistory(initialDate, finalDate);
         }
 
         public ScoreCombinationResult GetCombination(ScoreCombinationRequest request)
@@ -28,11 +36,11 @@ namespace ScoreCombination.Core.Processor
 
             result.Combination ??= new List<long>();
 
-            _scoreCombinationRepository.Save(new ScoreCombinationRecord
+            _repositoryRecord.Add(new ScoreCombinationRecord
             {
-                Combination = result.Combination,
+                Combination = string.Join(',', result.Combination),
                 Date = DateTime.Now,
-                Sequence = request.Sequence,
+                Sequence = string.Join(',', request.Sequence),
                 Target = request.Target
             });
 

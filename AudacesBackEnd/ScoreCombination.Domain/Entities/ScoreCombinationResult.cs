@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ScoreCombination.Core.Domain
+namespace ScoreCombination.Domain.Entities
 {
     public class ScoreCombinationResult
     {

@@ -1,11 +1,43 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using ScoreCombination.Application.Dtos;
+using ScoreCombination.Application.Interfaces;
 
 namespace ScoreCombination.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ScoreCombinationController : ControllerBase
     {
+        private readonly IApplicationServiceRecord _applicationServiceRecord;
+
+        public ScoreCombinationController(IApplicationServiceRecord applicationServiceRecord)
+        {
+            _applicationServiceRecord = applicationServiceRecord;
+        }
+
+        [HttpPost]
+        public ActionResult<ScoreCombinationResultDto> Post([FromBody] ScoreCombinationRequestDto request)
+        {
+            if (request == null)
+            {
+                return BadRequest("Please add some information to the request.");
+            }
+
+            if (request.Sequence == null)
+            {
+                ModelState.AddModelError(nameof(request.Sequence), "Please add one or more scores to the sequence.");
+                return BadRequest(ModelState);
+            }
+
+            if (request.Sequence.Any())
+            {
+                return Ok(_applicationServiceRecord.Post(request));
+            }
+
+            return BadRequest(ModelState);
+        }
+
         //private static readonly string[] Summaries = new[]
         //{
         //    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
