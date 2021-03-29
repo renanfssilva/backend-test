@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ScoreCombination.Core.Domain;
+using ScoreCombination.Domain.Entities;
+using ScoreCombination.Domain.Interfaces.Validators;
 
-namespace ScoreCombination.Core.Processor
+namespace ScoreCombination.Domain.Validators
 {
-    public class ScoreCombinationRequestValidator
+    public class ScoreCombinationRequestValidator : IScoreCombinationRequestValidator
     {
         public void Validate(ScoreCombinationRequest request)
         {

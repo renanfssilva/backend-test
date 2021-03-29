@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ScoreCombination.Core.Domain;
+using ScoreCombination.Domain.Entities;
 
-namespace ScoreCombination.Core.Database
+namespace ScoreCombination.Infrastructure.Data.Database
 {
     public class ScoreCombinationDbContext : DbContext
     {

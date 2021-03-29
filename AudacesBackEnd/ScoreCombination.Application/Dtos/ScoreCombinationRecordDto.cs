@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ScoreCombination.Core.Domain
+namespace ScoreCombination.Application.Dtos
 {
-    public class ScoreCombinationRecord
+    public class ScoreCombinationRecordDto
     {
-        public int Id { get; set; }
         public List<long> Sequence { get; set; }
         public long Target { get; set; }
         public List<long> Combination { get; set; }

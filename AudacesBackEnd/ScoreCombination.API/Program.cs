@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ScoreCombination.Core.Database;
+using ScoreCombination.Infrastructure.Data.Database;
 
 namespace ScoreCombination.API
 {

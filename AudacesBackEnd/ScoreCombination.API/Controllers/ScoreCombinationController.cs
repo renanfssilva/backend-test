@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ScoreCombination.Domain.Entities;
+using ScoreCombination.Infrastructure.Data.Database;
 
 namespace ScoreCombination.API.Controllers
 {
@@ -6,6 +8,27 @@ namespace ScoreCombination.API.Controllers
     [Route("[controller]")]
     public class ScoreCombinationController : ControllerBase
     {
+        private readonly ScoreCombinationDbContext _context;
+
+        public ScoreCombinationController(ScoreCombinationDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpPost]
+        public IActionResult Post(ScoreCombinationRequest request)
+        {
+            //if (!ModelState.IsValid) return BadRequest();
+
+            //try
+            //{
+            //    return 
+            //}
+            //var newId = _context.Record.Select(x => x.Id).Max() + 1;
+
+            return Ok();
+        }
+
         //private static readonly string[] Summaries = new[]
         //{
         //    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
