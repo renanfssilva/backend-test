@@ -38,9 +38,9 @@ namespace ScoreCombination.Domain.Services
 
             _repositoryRecord.Add(new ScoreCombinationRecord
             {
-                Combination = result.Combination,
+                Combination = string.Join(',', result.Combination),
                 Date = DateTime.Now,
-                Sequence = request.Sequence,
+                Sequence = string.Join(',', request.Sequence),
                 Target = request.Target
             });
 

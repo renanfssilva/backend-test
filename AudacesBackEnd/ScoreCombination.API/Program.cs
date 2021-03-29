@@ -1,3 +1,5 @@
+using System.IO;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,7 +11,10 @@ namespace ScoreCombination.API
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
+            var host = Host.CreateDefaultBuilder(args).UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                .ConfigureWebHostDefaults(webHostBuilder =>
+                    webHostBuilder.UseContentRoot(Directory.GetCurrentDirectory()).UseIISIntegration()
+                        .UseStartup<Startup>()).Build();
 
             using (var scope = host.Services.CreateScope())
             {

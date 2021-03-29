@@ -15,9 +15,9 @@ namespace ScoreCombination.Application.Mappers
         {
             CreateMap<ScoreCombinationRecordDto, ScoreCombinationRecord>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.Sequence, opt => opt.MapFrom(src => src.Sequence))
+                .ForMember(dest => dest.Sequence, opt => opt.MapFrom(src => string.Join(',', src.Sequence)))
                 .ForMember(dest => dest.Target, opt => opt.MapFrom(src => src.Target))
-                .ForMember(dest => dest.Combination, opt => opt.MapFrom(src => src.Combination))
+                .ForMember(dest => dest.Combination, opt => opt.MapFrom(src => string.Join(',', src.Combination)))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date));
         }
     }

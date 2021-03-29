@@ -20,6 +20,11 @@ namespace ScoreCombination.Infrastructure.CrossCutting.IOC
             builder.Register(context => new MapperConfiguration(config =>
             {
                 config.AddProfile(new DtoToModelScoreCombinationRecord());
+                config.AddProfile(new DtoToModelScoreCombinationResult());
+                config.AddProfile(new DtoToModelScoreCombinationRequest());
+                config.AddProfile(new ModelToDtoScoreCombinationRecord());
+                config.AddProfile(new ModelToDtoScoreCombinationResult());
+                config.AddProfile(new ModelToDtoScoreCombinationRequest());
             }));
 
             builder.Register(context => context.Resolve<MapperConfiguration>().CreateMapper()).As<IMapper>()

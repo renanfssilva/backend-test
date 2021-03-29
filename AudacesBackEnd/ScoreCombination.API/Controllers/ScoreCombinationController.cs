@@ -1,32 +1,41 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ScoreCombination.Domain.Entities;
-using ScoreCombination.Infrastructure.Data.Database;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using ScoreCombination.Application.Dtos;
+using ScoreCombination.Application.Interfaces;
 
 namespace ScoreCombination.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ScoreCombinationController : ControllerBase
     {
-        private readonly ScoreCombinationDbContext _context;
+        private readonly IApplicationServiceRecord _applicationServiceRecord;
 
-        public ScoreCombinationController(ScoreCombinationDbContext context)
+        public ScoreCombinationController(IApplicationServiceRecord applicationServiceRecord)
         {
-            _context = context;
+            _applicationServiceRecord = applicationServiceRecord;
         }
 
         [HttpPost]
-        public IActionResult Post(ScoreCombinationRequest request)
+        public ActionResult<ScoreCombinationResultDto> Post([FromBody] ScoreCombinationRequestDto request)
         {
-            //if (!ModelState.IsValid) return BadRequest();
+            if (request == null)
+            {
+                return BadRequest("Please add some information to the request.");
+            }
 
-            //try
-            //{
-            //    return 
-            //}
-            //var newId = _context.Record.Select(x => x.Id).Max() + 1;
+            if (request.Sequence == null)
+            {
+                ModelState.AddModelError(nameof(request.Sequence), "Please add one or more scores to the sequence.");
+                return BadRequest(ModelState);
+            }
 
-            return Ok();
+            if (request.Sequence.Any())
+            {
+                return Ok(_applicationServiceRecord.Post(request));
+            }
+
+            return BadRequest(ModelState);
         }
 
         //private static readonly string[] Summaries = new[]
