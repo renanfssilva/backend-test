@@ -2,7 +2,7 @@
 Teste para a vaga de Backend Developer na Audaces.
 
 ### Sobre o desafio:
-Você deverá desenvolver uma API com C# e, preferencialmente, GraphQL. 
+Foi desenvolvida uma API com C#, porém foram utilizados conceitos REST ao invés de GraphQL. 
 A API recebe uma lista de números, chamada de Sequence, e um número alvo, chamado de Target.  
 Por exemplo: 
 ```
@@ -12,14 +12,15 @@ Por exemplo:
 }
 ```
 
-A API deverá então checar se é possível atingir o número alvo com uma combinação das pontuações e, se possível, retornar essa combinação.  
+A API checa se é possível atingir o número alvo com uma combinação das pontuações e, se possível, retorna essa combinação.  
 No nosso exemplo, a API poderia retornar: 
 ```
 [2, 5, 20, 20]
 ```
-Além disso, chamadas para a API devem ser gravadas.
+Além disso, as chamadas para a API são gravadas num banco em memória para não haver a necessidade da utilização de um SQL Server e montar um banco completo para a aplicação.
+Como o problema é um NP-hard, a solução desenvolvida por mim poderá haver problemas com um Target de valor muito alto e uma Sequence longa.
 
-### Requisitos mínimos: 
+### Endpoints implementados: 
 
 * Um endpoint que recebe as pontuações e o número alvo, retornando uma combinação possível;
 
@@ -28,14 +29,7 @@ Além disso, chamadas para a API devem ser gravadas.
 
 ### Extras: 
 
-* Testes, sejam unitários ou de comportamento; 
-
-* Deploy em algum serviço como Heroku; 
-
-* Qualquer feature que você julgar legal :) 
-
- 
-
-Não se preocupe com uma interface para o usuário, a ideia é consultar a API diretamente pela linha de comando. Sinta-se à vontade para comentar qualquer decisão de projeto tomada durante o desafio. 
-
-Qualquer dúvida, estamos à disposição. Lembre-se que quanto antes o desafio for terminado, mais cedo poderemos continuar com o processo.  
+* Testes unitários com xUnit e Moq;
+* Swagger para a documentação através do endpoint `api/documentation`;
+* Autofac para a inversão de controle;
+* AutoMapper para fazer o mapeamento de DTOs e Models.
