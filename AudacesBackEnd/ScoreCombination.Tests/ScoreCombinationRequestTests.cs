@@ -94,28 +94,11 @@ namespace ScoreCombination.Tests
         }
 
         [Fact]
-        public void ShouldSaveApiCalls()
+        public void ShouldReturnEmptyListIfThereWereNoApiCalls()
         {
-            //_request.Sequence = new List<long> { 5, 20, 2, 1 };
-            //_request.Target = 47;
+            var result = _service.GetCallHistory(DateTime.Today, DateTime.Today);
 
-            //ScoreCombinationRecord recordSaved = null;
-            //_scoreCombinationRepositoryMock.Setup(x => x.GetCallHistory(It.IsAny<ScoreCombinationRecord>()))
-            //    .Callback<ScoreCombinationRecord>(
-            //        record =>
-            //        {
-            //            recordSaved = record;
-            //        });
-
-            //_processor.GetCombination(_request);
-
-            //_scoreCombinationRepositoryMock.Verify(x => x.Save(It.IsAny<ScoreCombinationRecord>()), Times.Once);
-
-            //Assert.NotNull(recordSaved);
-            //Assert.Equal(_request.Sequence, recordSaved.Sequence);
-            //Assert.Equal(_request.Target, recordSaved.Target);
-            //Assert.Equal(_request.Target, recordSaved.Combination.Sum());
-            //Assert.Equal(DateTime.Today.DayOfYear, recordSaved.Date.DayOfYear);
+            Assert.NotNull(result);
         }
     }
 }

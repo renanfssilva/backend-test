@@ -4,5 +4,37 @@
         <name>ScoreCombination.API</name>
     </assembly>
     <members>
+        <member name="M:ScoreCombination.API.Controllers.ScoreCombinationController.Post(ScoreCombination.Application.Dtos.ScoreCombinationRequestDto)">
+             <summary>
+             Get the request from body, store the request and returns the score combination result.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST
+                 {
+                     "Sequence": [5, 20, 2, 1],
+                     "Target": 47
+                 }
+             
+             </remarks>
+             <param name="request">Request is an object that has one list of long called 'Sequence' and a long number called 'Target'.</param>
+             <returns>If there are no errors, it returns the combination result.</returns>
+        </member>
+        <member name="M:ScoreCombination.API.Controllers.ScoreCombinationController.Get(System.DateTime,System.DateTime)">
+             <summary>
+             Get the dates from url and returns all requests made between them.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 GET
+                 https://localhost:44362/api/scoreCombination/initialDate/2021-01-01/finalDate/2021-12-31
+             
+             </remarks>
+             <param name="initialDate">Initial Date</param>
+             <param name="finalDate">Final Date</param>
+             <returns>If there are no errors, it returns a list with all the api calls between the dates.</returns>
+        </member>
     </members>
 </doc>
